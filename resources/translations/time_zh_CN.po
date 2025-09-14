@@ -1,0 +1,72 @@
+msgid "just now"
+msgstr "刚刚"
+
+msgid "%(n)s second ago"
+msgid_plural "%(n)s seconds ago"
+msgstr[0] "%(n)s 秒前"
+msgstr[1] "%(n)s 秒前"
+
+msgid "%(n)s minute ago"
+msgid_plural "%(n)s minutes ago"
+msgstr[0] "%(n)s 分钟前"
+msgstr[1] "%(n)s 分钟前"
+
+msgid "%(n)s hour ago"
+msgid_plural "%(n)s hours ago"
+msgstr[0] "%(n)s 小时前"
+msgstr[1] "%(n)s 小时前"
+
+msgid "%(n)s day ago"
+msgid_plural "%(n)s days ago"
+msgstr[0] "%(n)s 天前"
+msgstr[1] "%(n)s 天前"
+
+msgid "%(n)s week ago"
+msgid_plural "%(n)s weeks ago"
+msgstr[0] "%(n)s 周前"
+msgstr[1] "%(n)s 周前"
+
+msgid "%(n)s month ago"
+msgid_plural "%(n)s months ago"
+msgstr[0] "%(n)s 个月前"
+msgstr[1] "%(n)s 个月前"
+
+msgid "%(n)s year ago"
+msgid_plural "%(n)s years ago"
+msgstr[0] "%(n)s 年前"
+msgstr[1] "%(n)s 年前"
+
+msgid "%(n)s second from now"
+msgid_plural "%(n)s seconds from now"
+msgstr[0] "%(n)s 秒后"
+msgstr[1] "%(n)s 秒后"
+
+msgid "%(n)s minute from now"
+msgid_plural "%(n)s minutes from now"
+msgstr[0] "%(n)s 分钟后"
+msgstr[1] "%(n)s 分钟后"
+
+msgid "%(n)s hour from now"
+msgid_plural "%(n)s hours from now"
+msgstr[0] "%(n)s 小时后"
+msgstr[1] "%(n)s 小时后"
+
+msgid "%(n)s day from now"
+msgid_plural "%(n)s days from now"
+msgstr[0] "%(n)s 天后"
+msgstr[1] "%(n)s 天后"
+
+msgid "%(n)s week from now"
+msgid_plural "%(n)s weeks from now"
+msgstr[0] "%(n)s 周后"
+msgstr[1] "%(n)s 周后"
+
+msgid "%(n)s month from now"
+msgid_plural "%(n)s months from now"
+msgstr[0] "%(n)s 个月后"
+msgstr[1] "%(n)s 个月后"
+
+msgid "%(n)s year from now"
+msgid_plural "%(n)s years from now"
+msgstr[0] "%(n)s 年后"
+msgstr[1] "%(n)s 年后"

@@ -1,0 +1,185 @@
+# Translations template for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-09-15 00:48+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: core/utils/Time.py:65
+msgid "year"
+msgstr ""
+
+#: core/utils/Time.py:66
+msgid "years"
+msgstr ""
+
+#: core/utils/Time.py:67
+msgid "month"
+msgstr ""
+
+#: core/utils/Time.py:68
+msgid "months"
+msgstr ""
+
+#: core/utils/Time.py:69
+msgid "week"
+msgstr ""
+
+#: core/utils/Time.py:70
+msgid "weeks"
+msgstr ""
+
+#: core/utils/Time.py:71
+msgid "day"
+msgstr ""
+
+#: core/utils/Time.py:72
+msgid "days"
+msgstr ""
+
+#: core/utils/Time.py:73
+msgid "hour"
+msgstr ""
+
+#: core/utils/Time.py:74
+msgid "hours"
+msgstr ""
+
+#: core/utils/Time.py:75
+msgid "minute"
+msgstr ""
+
+#: core/utils/Time.py:76
+msgid "minutes"
+msgstr ""
+
+#: core/utils/Time.py:77
+msgid "second"
+msgstr ""
+
+#: core/utils/Time.py:78
+msgid "seconds"
+msgstr ""
+
+#: core/utils/Time.py:79
+msgid "millisecond"
+msgstr ""
+
+#: core/utils/Time.py:80
+msgid "milliseconds"
+msgstr ""
+
+#: core/utils/Time.py:261
+#, python-format
+msgid "%(num)d year from now"
+msgid_plural "%(num)d years from now"
+msgstr[0] ""
+msgstr[1] ""
+
+#: core/utils/Time.py:263
+#, python-format
+msgid "%(num)d month from now"
+msgid_plural "%(num)d months from now"
+msgstr[0] ""
+msgstr[1] ""
+
+#: core/utils/Time.py:265
+#, python-format
+msgid "%(num)d week from now"
+msgid_plural "%(num)d weeks from now"
+msgstr[0] ""
+msgstr[1] ""
+
+#: core/utils/Time.py:267
+#, python-format
+msgid "%(num)d day from now"
+msgid_plural "%(num)d days from now"
+msgstr[0] ""
+msgstr[1] ""
+
+#: core/utils/Time.py:269
+#, python-format
+msgid "%(num)d hour from now"
+msgid_plural "%(num)d hours from now"
+msgstr[0] ""
+msgstr[1] ""
+
+#: core/utils/Time.py:271
+#, python-format
+msgid "%(num)d minute from now"
+msgid_plural "%(num)d minutes from now"
+msgstr[0] ""
+msgstr[1] ""
+
+#: core/utils/Time.py:273
+#, python-format
+msgid "%(num)d second from now"
+msgid_plural "%(num)d seconds from now"
+msgstr[0] ""
+msgstr[1] ""
+
+#: core/utils/Time.py:275
+#, python-format
+msgid "%(num)d second ago"
+msgid_plural "%(num)d seconds ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: core/utils/Time.py:277
+#, python-format
+msgid "%(num)d minute ago"
+msgid_plural "%(num)d minutes ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: core/utils/Time.py:279
+#, python-format
+msgid "%(num)d hour ago"
+msgid_plural "%(num)d hours ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: core/utils/Time.py:281
+#, python-format
+msgid "%(num)d day ago"
+msgid_plural "%(num)d days ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: core/utils/Time.py:283
+#, python-format
+msgid "%(num)d week ago"
+msgid_plural "%(num)d weeks ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: core/utils/Time.py:285
+#, python-format
+msgid "%(num)d month ago"
+msgid_plural "%(num)d months ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: core/utils/Time.py:288
+#, python-format
+msgid "%(num)d year ago"
+msgid_plural "%(num)d years ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: core/utils/Time.py:290
+msgid "just now"
+msgstr ""
+

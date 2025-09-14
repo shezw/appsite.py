@@ -1,0 +1,172 @@
+# Chinese (Simplified, China) translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-09-15 00:48+0800\n"
+"PO-Revision-Date: 2025-09-15 00:54+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_Hans_CN\n"
+"Language-Team: zh_Hans_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: core/utils/Time.py:65
+msgid "year"
+msgstr "年"
+
+#: core/utils/Time.py:66
+msgid "years"
+msgstr "年"
+
+#: core/utils/Time.py:67
+msgid "month"
+msgstr "月"
+
+#: core/utils/Time.py:68
+msgid "months"
+msgstr "月"
+
+#: core/utils/Time.py:69
+msgid "week"
+msgstr "周"
+
+#: core/utils/Time.py:70
+msgid "weeks"
+msgstr "周"
+
+#: core/utils/Time.py:71
+msgid "day"
+msgstr "天"
+
+#: core/utils/Time.py:72
+msgid "days"
+msgstr "天"
+
+#: core/utils/Time.py:73
+msgid "hour"
+msgstr "时"
+
+#: core/utils/Time.py:74
+msgid "hours"
+msgstr "小时"
+
+#: core/utils/Time.py:75
+msgid "minute"
+msgstr "分"
+
+#: core/utils/Time.py:76
+msgid "minutes"
+msgstr "分钟"
+
+#: core/utils/Time.py:77
+msgid "second"
+msgstr "秒"
+
+#: core/utils/Time.py:78
+msgid "seconds"
+msgstr "秒"
+
+#: core/utils/Time.py:79
+msgid "millisecond"
+msgstr "毫秒"
+
+#: core/utils/Time.py:80
+msgid "milliseconds"
+msgstr "毫秒"
+
+#: core/utils/Time.py:261
+#, python-format
+msgid "%(num)d 年后"
+msgid_plural "%(num)d years from now"
+msgstr[0] ""
+
+#: core/utils/Time.py:263
+#, python-format
+msgid "%(num)d 个月后"
+msgid_plural "%(num)d months from now"
+msgstr[0] ""
+
+#: core/utils/Time.py:265
+#, python-format
+msgid "%(num)d 周后"
+msgid_plural "%(num)d weeks from now"
+msgstr[0] ""
+
+#: core/utils/Time.py:267
+#, python-format
+msgid "%(num)d 天后"
+msgid_plural "%(num)d days from now"
+msgstr[0] ""
+
+#: core/utils/Time.py:269
+#, python-format
+msgid "%(num)d 小时后"
+msgid_plural "%(num)d hours from now"
+msgstr[0] ""
+
+#: core/utils/Time.py:271
+#, python-format
+msgid "%(num)d 分钟后"
+msgid_plural "%(num)d minutes from now"
+msgstr[0] ""
+
+#: core/utils/Time.py:273
+#, python-format
+msgid "%(num)d 秒后"
+msgid_plural "%(num)d seconds from now"
+msgstr[0] ""
+
+#: core/utils/Time.py:275
+#, python-format
+msgid "%(num)d 秒前"
+msgid_plural "%(num)d seconds ago"
+msgstr[0] ""
+
+#: core/utils/Time.py:277
+#, python-format
+msgid "%(num)d 分钟前"
+msgid_plural "%(num)d minutes ago"
+msgstr[0] ""
+
+#: core/utils/Time.py:279
+#, python-format
+msgid "%(num)d 小时前"
+msgid_plural "%(num)d hours ago"
+msgstr[0] ""
+
+#: core/utils/Time.py:281
+#, python-format
+msgid "%(num)d 天前"
+msgid_plural "%(num)d days ago"
+msgstr[0] ""
+
+#: core/utils/Time.py:283
+#, python-format
+msgid "%(num)d 周前"
+msgid_plural "%(num)d weeks ago"
+msgstr[0] ""
+
+#: core/utils/Time.py:285
+#, python-format
+msgid "%(num)d 个月前"
+msgid_plural "%(num)d months ago"
+msgstr[0] ""
+
+#: core/utils/Time.py:288
+#, python-format
+msgid "%(num)d 年前"
+msgid_plural "%(num)d 年前"
+msgstr[0] "%(num)d 年前"
+
+#: core/utils/Time.py:290
+msgid "刚刚"
+msgstr ""
+

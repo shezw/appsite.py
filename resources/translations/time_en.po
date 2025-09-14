@@ -1,0 +1,72 @@
+msgid "just now"
+msgstr "just now"
+
+msgid "%(n)s second ago"
+msgid_plural "%(n)s seconds ago"
+msgstr[0] "%(n)s second ago"
+msgstr[1] "%(n)s seconds ago"
+
+msgid "%(n)s minute ago"
+msgid_plural "%(n)s minutes ago"
+msgstr[0] "%(n)s minute ago"
+msgstr[1] "%(n)s minutes ago"
+
+msgid "%(n)s hour ago"
+msgid_plural "%(n)s hours ago"
+msgstr[0] "%(n)s hour ago"
+msgstr[1] "%(n)s hours ago"
+
+msgid "%(n)s day ago"
+msgid_plural "%(n)s days ago"
+msgstr[0] "%(n)s day ago"
+msgstr[1] "%(n)s days ago"
+
+msgid "%(n)s week ago"
+msgid_plural "%(n)s weeks ago"
+msgstr[0] "%(n)s week ago"
+msgstr[1] "%(n)s weeks ago"
+
+msgid "%(n)s month ago"
+msgid_plural "%(n)s months ago"
+msgstr[0] "%(n)s month ago"
+msgstr[1] "%(n)s months ago"
+
+msgid "%(n)s year ago"
+msgid_plural "%(n)s years ago"
+msgstr[0] "%(n)s year ago"
+msgstr[1] "%(n)s years ago"
+
+msgid "%(n)s second from now"
+msgid_plural "%(n)s seconds from now"
+msgstr[0] "%(n)s second from now"
+msgstr[1] "%(n)s seconds from now"
+
+msgid "%(n)s minute from now"
+msgid_plural "%(n)s minutes from now"
+msgstr[0] "%(n)s minute from now"
+msgstr[1] "%(n)s minutes from now"
+
+msgid "%(n)s hour from now"
+msgid_plural "%(n)s hours from now"
+msgstr[0] "%(n)s hour from now"
+msgstr[1] "%(n)s hours from now"
+
+msgid "%(n)s day from now"
+msgid_plural "%(n)s days from now"
+msgstr[0] "%(n)s day from now"
+msgstr[1] "%(n)s days from now"
+
+msgid "%(n)s week from now"
+msgid_plural "%(n)s weeks from now"
+msgstr[0] "%(n)s week from now"
+msgstr[1] "%(n)s weeks from now"
+
+msgid "%(n)s month from now"
+msgid_plural "%(n)s months from now"
+msgstr[0] "%(n)s month from now"
+msgstr[1] "%(n)s months from now"
+
+msgid "%(n)s year from now"
+msgid_plural "%(n)s years from now"
+msgstr[0] "%(n)s year from now"
+msgstr[1] "%(n)s years from now"
