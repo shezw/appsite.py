@@ -16,6 +16,16 @@ class AsTimeConstants(int):
     MILLISECOND = 1  # 一毫秒
 
 
+class AsTimeFormat(Enum):
+    LiteDate = 'litedate'
+    FullDate = 'fulldate'
+    NumberDate = 'numberdate'
+    LiteTime = 'litetime'
+    FullTime = 'fulltime'
+    NumberTime = 'numbertime'
+    NumberMonth = 'numbermonth'
+    DatePicker = 'datepicker'
+
 
 class AsTime:
     def __init__(self, specific_time_ms: int = 0):

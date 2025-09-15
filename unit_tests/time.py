@@ -6,7 +6,7 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from core.utils.Time import AsTime
+from engine.utils.Time import AsTime
 
 class MyTestCase(unittest.TestCase):
 
