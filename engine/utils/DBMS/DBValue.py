@@ -1,4 +1,4 @@
-from engine.core.DB import DBType, DBFieldType
+from engine.utils.DBMS.DBTypes import DBType, DBFieldType
 import json
 
 class DBLocationValue:

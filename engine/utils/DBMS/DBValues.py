@@ -1,6 +1,5 @@
-from engine.core.DB import DBType, DBFieldType
+from engine.utils.DBMS.DBTypes import DBType, DBFieldType
 from engine.utils.DBMS.DBValue import DBValue
-
 
 class DBValues:
     def __init__(self):
