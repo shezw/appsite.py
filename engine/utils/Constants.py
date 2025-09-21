@@ -3,6 +3,8 @@ from enum import Enum, IntEnum
 DBSuperAdminUID = "SUPER"
 DBAdminUID = "ADMIN"
 
+DBDefaultSASSID = "DEFAULT"
+
 class UserGroup(Enum):
     SuperAdmin = '900'
     Admin = '800'
@@ -41,6 +43,9 @@ class UserGroupRole(Enum):
 class DBStatus(Enum):
     Super = 'SUPER'
     Enabled = 'enabled'
+    Disabled = 'disabled'
+    Offline = 'offline'
+    Trash = 'trash'
     Pending = 'pending'
     Blocked = 'blocked'
     Locked = 'locked'

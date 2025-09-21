@@ -3,6 +3,7 @@ import includes
 from engine.core.DB import DBType, AsDB
 from engine.utils.DBMS.DBConditions import DBConditions
 from engine.utils.DBMS.DBCondition import DBCondition, DBConditionMode
+from engine.utils.DBMS.DBTypes import DBOrderDirection
 
 test_demo_db = "appsite_py"
 test_demo_prefix = "aps_"
@@ -113,6 +114,40 @@ class MyTestCase(unittest.TestCase):
 
         cond6 = DBCondition.new("weichatid").is_null()
         self.assertEqual(cond6.to_query(), "AND `weichatid` IS NULL")
+
+    def test_04_db_conditions(self):
+
+        conds = DBConditions.new() \
+            .where("name").equal("John") \
+            .and_where("age").greater_than(18) \
+            .and_where("status").belong_to(["active", "pending"]) \
+            .and_where("createtime").between(1625077765, 1625164165) \
+            .and_where("description").search("llm") \
+            .and_where("content").search_in(["llm","cnn","machine learning"]) \
+            .and_where("weichatid").is_null() \
+            .order_by("createtime", direction=DBOrderDirection.Desc) \
+            .order_by_distance(field="location", latitude=12.34, longitude=56.78, direction=DBOrderDirection.Asc)
+
+        expected_query = ("WHERE `name` = 'John' "
+                          "AND `age` > 18 "
+                          "AND `status` IN ('active', 'pending') "
+                          "AND `createtime` BETWEEN 1625077765 AND 1625164165 "
+                          "AND MATCH (`description`) AGAINST ('llm' IN NATURAL LANGUAGE MODE) "
+                          "AND (MATCH (`content`) AGAINST ('llm' IN NATURAL LANGUAGE MODE) OR MATCH (`content`) AGAINST ('cnn' IN NATURAL LANGUAGE MODE) OR MATCH (`content`) AGAINST ('machine learning' IN NATURAL LANGUAGE MODE)) "
+                          "AND `weichatid` IS NULL")
+
+        self.assertEqual(conds.condition_to_query(), expected_query)
+
+        expected_order = " ORDER BY `createtime` DESC, GLength(LineStringFromWKB(LineString(`location`, POINT(56.78 12.34)))) ASC"
+        self.assertEqual(conds.order_to_query(), expected_order)
+
+        expected_limit = " LIMIT 0,20"
+        self.assertEqual(conds.limit_to_query(), expected_limit)
+
+        expected_group = " GROUP BY `status`"
+        conds.group_by("status")
+        self.assertEqual(conds.group_to_query(), expected_group)
+
 
 if __name__ == '__main__':
     unittest.main()

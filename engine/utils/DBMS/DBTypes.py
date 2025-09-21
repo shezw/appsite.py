@@ -7,6 +7,11 @@ class DBType(StrEnum):
     PostgreSQL = "postgresql"
     MariaDB = "mariadb"
 
+class DBOrderDirection(StrEnum):
+    NONE = "None"
+    Asc = "ASC"
+    Desc = "DESC"
+
 class DBFieldType(StrEnum):
     Null = "db_null"
     Boolean = "db_boolean"   # tinyint 1

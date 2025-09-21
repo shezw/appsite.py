@@ -1,129 +1,8 @@
 from abc import abstractmethod
-from enum import IntEnum, StrEnum
 from flask_babel import gettext as _
-
-class DBType(StrEnum):
-    Unknown = "unknown"
-    MySQL = "mysql"
-    PostgreSQL = "postgresql"
-    MariaDB = "mariadb"
-
-class DBFieldType(StrEnum):
-    Null = "db_null"
-    Boolean = "db_boolean"   # tinyint 1
-    Int = "db_int"  # tinyint 1-3     mediumint 3-6   bigint 8-13
-    Float = "db_float"  # 0
-    Double = "db_double"  # 0
-    Decimal = "db_decimal"  # ?,?
-    TimeStamp = "db_timestamp"  # bigint 13
-    Location = "db_location"  # GEOMETRY ( DOUBLE )
-    String = "db_string"  # varchar <=2048 ,  text >2048
-    RichText = "db_richtext"  # text 65535  mediumint 16777215
-    Json = "db_json"  # text 0
-    ASJson = "db_asjson"  # text 0
-
-    @staticmethod
-    def get_database_clear_type(field_type: str, field_len: int) -> str:
-        if field_type == DBFieldType.Null:
-            return "NULL"
-        elif field_type == DBFieldType.Boolean:
-            return "TINYINT(1)"
-        elif field_type == DBFieldType.Int:
-            if field_len <= 3:
-                return "TINYINT(3)"
-            elif field_len <= 6:
-                return "MEDIUMINT(6)"
-            elif field_len <= 8:
-                return "INT(8)"
-            elif field_len <= 13:
-                return "BIGINT(13)"
-            else:
-                return "BIGINT"
-        elif field_type == DBFieldType.Float:
-            return "FLOAT"
-        elif field_type == DBFieldType.Double:
-            return "DOUBLE"
-        elif field_type == DBFieldType.Decimal:
-            int_len = field_len // 1000
-            decimal_len = field_len % 1000
-            if int_len <= 0:
-                int_len = 10
-            if decimal_len < 0:
-                decimal_len = 2
-            return f"DECIMAL({int_len},{decimal_len})"
-        elif field_type == DBFieldType.TimeStamp:
-            return "BIGINT(13)"
-        elif field_type == DBFieldType.Location:
-            return "GEOMETRY"
-        elif field_type == DBFieldType.String:
-            if field_len <= 0:
-                field_len = 255
-            if field_len > 2048:
-                return "TEXT"
-            else:
-                return f"VARCHAR({field_len})"
-        elif field_type == DBFieldType.RichText:
-            if field_len <= 0:
-                field_len = 65535
-            if field_len > 65535:
-                return "MEDIUMTEXT"
-            else:
-                return "TEXT"
-        elif field_type == DBFieldType.Json:
-            return "TEXT"
-        elif field_type == DBFieldType.ASJson:
-            return "TEXT"
-
-
-class DBFieldIndex(StrEnum):
-    NONE = 'NONE'
-    Primary = 'PRIMARY'   # 主键索引
-    Index = 'INDEX'       # 一般索引
-    Unique = 'UNIQUE'     # 唯一索引
-    FullText ='FULLTEXT'  # 分词索引
-    Spatial = 'SPATIAL'   # 空间索引
-
-
-class AsDBFieldDef:
-
-    def __init__(self):
-        self.name = ""
-        self.type = DBFieldType.Null
-
-        self.len = 0
-        # !important:
-        # if type is decimal, len is int len * 1000 + decimal len
-        # 如果是decimal类型，len是整数长度*1000 + 小数长度
-
-        self.nullable = False
-        self.comment = ""
-        self.index = DBFieldIndex.NONE
-
-    @staticmethod
-    def create(name: str, comment: str, field_type: str = DBFieldType.Null,
-               field_len: int = 0, nullable: int = 1, index_type: str = DBFieldIndex.NONE) -> 'AsDBFieldDef':
-        field = AsDBFieldDef()
-        field.name = name
-        field.type = field_type
-        field.len = field_len
-        field.nullable = (nullable != 0)
-        field.comment = comment
-        field.index = index_type
-        return field
-
-
-def common_db_fields() -> list[AsDBFieldDef]:
-    return [
-        AsDBFieldDef.create("sort", _('Sort Order'), DBFieldType.Int, 0, DBFieldIndex.INDEXED, False, "Sort Order"),
-        AsDBFieldDef.create("featured", _('Is featured'), DBFieldType.Boolean, 0, DBFieldIndex.INDEXED, False, "Is Featured"),
-        AsDBFieldDef.create('status', _("Status of db row"), DBFieldType.String, 12, False, DBFieldIndex.Index),
-        AsDBFieldDef.create('createtime', _('Create time'), DBFieldType.TimeStamp, 13, False, DBFieldIndex.Index),
-        AsDBFieldDef.create('lasttime', _('Last update time'), DBFieldType.TimeStamp, 13, False, DBFieldIndex.Index),
-    ]
-
-
-def saas_db_field() -> AsDBFieldDef:
-    return AsDBFieldDef.create('saasid', '所属saas', DBFieldType.String, 8, True, DBFieldIndex.Index)
+from engine.utils.DBMS.DBTypes import DBType, DBFieldType, DBFieldIndex, AsDBFieldDef
+from engine.utils.DBMS.DBValues import DBValues
+from engine.utils.DBMS.DBConditions import DBConditions
 
 asdb_mysql_singleton = None
 asdb_postgresql_singleton = None
@@ -142,8 +21,12 @@ class AsDB:
         self.is_connected = False
         self.connection = None
 
+    def __del__(self):
+        self.close()
+
     @staticmethod
     def shared( db_type: DBType, host: str = None, port: int = None, user: str = None, password: str = None, database: str = None, table_prefix: str = "", charset: str = "utf8mb4" ):
+
         global asdb_mysql_singleton
         global asdb_postgresql_singleton
         global asdb_mariadb_singleton
@@ -183,6 +66,21 @@ class AsDB:
 
         return db
 
+    @staticmethod
+    def active():
+        global asdb_mysql_singleton
+        global asdb_postgresql_singleton
+        global asdb_mariadb_singleton
+
+        if asdb_mysql_singleton is not None and asdb_mysql_singleton.is_connected:
+            return asdb_mysql_singleton
+        if asdb_postgresql_singleton is not None and asdb_postgresql_singleton.is_connected:
+            return asdb_postgresql_singleton
+        if asdb_mariadb_singleton is not None and asdb_mariadb_singleton.is_connected:
+            return asdb_mariadb_singleton
+
+        return None
+
     def connect(self) -> bool:
         if self.db_type == DBType.MySQL:
             return self.connect_mysql()
@@ -193,15 +91,15 @@ class AsDB:
 
 
     @staticmethod
-    def mariadb(host: str, port: int, user: str, password: str, database: str, table_prefix: str = "", charset: str = "utf8mb4"):
+    def mariadb( host: str = None, port: int = None, user: str = None, password: str = None, database: str = None, table_prefix: str = "", charset: str = "utf8mb4" ):
         return AsDB.shared(DBType.MariaDB, host, port, user, password, database, table_prefix, charset)
 
     @staticmethod
-    def mysql(host: str, port: int, user: str, password: str, database: str, table_prefix: str = "", charset: str = "utf8mb4"):
+    def mysql( host: str = None, port: int = None, user: str = None, password: str = None, database: str = None, table_prefix: str = "", charset: str = "utf8mb4" ):
         return AsDB.shared(db_type=DBType.MySQL, host=host, port=port, user=user, password=password, database=database, table_prefix=table_prefix, charset=charset)
 
     @staticmethod
-    def postgresql(host: str, port: int, user: str, password: str, database: str, table_prefix: str = "", charset: str = "utf8mb4"):
+    def postgresql( host: str = None, port: int = None, user: str = None, password: str = None, database: str = None, table_prefix: str = "", charset: str = "utf8mb4" ):
         return AsDB.shared(db_type=DBType.PostgreSQL, host=host, port=port, user=user, password=password, database=database, table_prefix=table_prefix, charset=charset)
 
     def connect_mysql(self):
@@ -246,3 +144,84 @@ class AsDB:
     def connect_mariadb(self):
         # todo
         pass
+
+    def get_version(self):
+        if not self.is_connected or self.connection is None:
+            return None
+
+        try:
+            cursor = self.connection.cursor()
+            if self.db_type == DBType.MySQL or self.db_type == DBType.MariaDB:
+                cursor.execute("SELECT VERSION()")
+            elif self.db_type == DBType.PostgreSQL:
+                cursor.execute("SHOW server_version")
+            version = cursor.fetchone()
+            cursor.close()
+            if version:
+                return version[0]
+            return None
+        except Exception as e:
+            print(f"Error getting database version: {e}")
+            return None
+
+    def get_versions(self):
+        version_str = self.get_version()
+        if version_str is None:
+            return 0, 0, 0
+
+        parts = version_str.split(".")
+        major = int(parts[0]) if len(parts) > 0 and parts[0].isdigit() else 0
+        minor = int(parts[1]) if len(parts) > 1 and parts[1].isdigit() else 0
+        patch = int(parts[2]) if len(parts) > 2 and parts[2].isdigit() else 0
+
+        return major, minor, patch
+
+    def get_version_major(self):
+        major, _, _ = self.get_versions()
+        return major
+
+    def get_version_minor(self):
+        _, minor, _ = self.get_versions()
+        return minor
+
+    def get_version_patch(self):
+        _, _, patch = self.get_versions()
+        return patch
+
+    def close(self):
+        if self.connection:
+            self.connection.close()
+            self.is_connected = False
+            self.connection = None
+
+    def _insert(self, values:DBValues, table:str) -> str | None:
+        if not self.is_connected or self.connection is None:
+            return None
+
+        if values is None or len(values.values) == 0:
+            return None
+
+        return f"INSERT INTO `{self.table_prefix}{table}` SET {values.to_db(self.db_type, self.get_version_major())}"
+
+
+    def _update(self, values:DBValues, table:str, condition:DBConditions ) -> str | None:
+        pass
+
+
+    def insert(self, values:DBValues, table:str) -> bool:
+
+        _query = self._insert(values, table)
+
+        if _query is None:
+            return False
+
+        try:
+            cursor = self.connection.cursor()
+            cursor.execute(_query)
+            self.connection.commit()
+            cursor.close()
+            return True
+        except Exception as e:
+            print(f"Error inserting into {table}: {e}")
+            return False
+
