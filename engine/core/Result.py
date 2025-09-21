@@ -1,4 +1,4 @@
-from core.utils.Time import AsTime
+from engine.utils.Time import AsTime
 
 class AsResult:
     def __init__(self):

@@ -1,4 +1,5 @@
-from engine.core.DB import AsDBFieldDef, DBFieldType, DBFieldIndex, common_db_fields, saas_db_field
+from engine.core.DB import AsDBFieldDef, DBFieldType, DBFieldIndex
+from engine.utils.DBMS.DBTypes import common_db_fields, saas_db_field
 from engine.core.Model import AsModel
 
 class UserInfo(AsModel):
@@ -121,30 +122,30 @@ class UserInfo(AsModel):
 
     def table_def(self) -> list[AsDBFieldDef] | None:
         return [
-            AsDBFieldDef.create('userid', '用户ID 唯一索引', DBFieldType.DBField_String, 8, False, DBFieldIndex.DBIndex_Unique),
-            AsDBFieldDef.create('gallery', '相册 JSON ARRAY', DBFieldType.DBField_Json, -1, True, DBFieldIndex.DBIndex_None),
+            AsDBFieldDef.create('userid', '用户ID 唯一索引', DBFieldType.String, 8, False, DBFieldIndex.Unique),
+            AsDBFieldDef.create('gallery', '相册 JSON ARRAY', DBFieldType.Json, -1, True, DBFieldIndex.NONE),
 
-            AsDBFieldDef.create('vip', '是否vip', DBFieldType.DBField_Int, 2, False, DBFieldIndex.DBIndex_Index),
-            AsDBFieldDef.create('vipexpire', 'vip过期时间', DBFieldType.DBField_Int, 11, False, DBFieldIndex.DBIndex_Index),
+            AsDBFieldDef.create('vip', '是否vip', DBFieldType.Int, 2, False, DBFieldIndex.Index),
+            AsDBFieldDef.create('vipexpire', 'vip过期时间', DBFieldType.Int, 11, False, DBFieldIndex.Index),
 
-            AsDBFieldDef.create('realname', '真实姓名 30字以内', DBFieldType.DBField_String, 63, True, DBFieldIndex.DBIndex_None),
-            AsDBFieldDef.create('idnumber', '身份证号 30字以内', DBFieldType.DBField_String, 63, True, DBFieldIndex.DBIndex_None),
-            AsDBFieldDef.create('country', '国家 12字以内', DBFieldType.DBField_String, 24, True, DBFieldIndex.DBIndex_None),
-            AsDBFieldDef.create('province', '省份 12字以内', DBFieldType.DBField_String, 24, True, DBFieldIndex.DBIndex_None),
-            AsDBFieldDef.create('city', '城市 12字以内', DBFieldType.DBField_String, 24, True, DBFieldIndex.DBIndex_None),
-            AsDBFieldDef.create('company', '公司 30字以内', DBFieldType.DBField_String, 63, True, DBFieldIndex.DBIndex_None),
+            AsDBFieldDef.create('realname', '真实姓名 30字以内', DBFieldType.String, 63, True, DBFieldIndex.NONE),
+            AsDBFieldDef.create('idnumber', '身份证号 30字以内', DBFieldType.String, 63, True, DBFieldIndex.NONE),
+            AsDBFieldDef.create('country', '国家 12字以内', DBFieldType.String, 24, True, DBFieldIndex.NONE),
+            AsDBFieldDef.create('province', '省份 12字以内', DBFieldType.String, 24, True, DBFieldIndex.NONE),
+            AsDBFieldDef.create('city', '城市 12字以内', DBFieldType.String, 24, True, DBFieldIndex.NONE),
+            AsDBFieldDef.create('company', '公司 30字以内', DBFieldType.String, 63, True, DBFieldIndex.NONE),
 
-            AsDBFieldDef.create('wechatid', '微信公众平台openid 默认获取 unionid', DBFieldType.DBField_String, 32, True, DBFieldIndex.DBIndex_Unique),
-            AsDBFieldDef.create('weiboid', '微博ID', DBFieldType.DBField_String, 63, True, DBFieldIndex.DBIndex_None),
-            AsDBFieldDef.create('appleUUID', '苹果UUID', DBFieldType.DBField_String, 64, True, DBFieldIndex.DBIndex_None),
-            AsDBFieldDef.create('facebookid', 'facebook', DBFieldType.DBField_String, 64, True, DBFieldIndex.DBIndex_None),
-            AsDBFieldDef.create('twitterid', 'twitter', DBFieldType.DBField_String, 64, True, DBFieldIndex.DBIndex_None),
-            AsDBFieldDef.create('googleid', 'google', DBFieldType.DBField_String, 64, True, DBFieldIndex.DBIndex_None),
-            AsDBFieldDef.create('douyinid', '抖音id', DBFieldType.DBField_String, 64, True, DBFieldIndex.DBIndex_None),
-            AsDBFieldDef.create('ticktokid', 'ticktokid', DBFieldType.DBField_String, 64, True, DBFieldIndex.DBIndex_None),
-            AsDBFieldDef.create('qqid', 'qqID', DBFieldType.DBField_String, 63, True, DBFieldIndex.DBIndex_None),
-            AsDBFieldDef.create('deviceid', 'Device ID', DBFieldType.DBField_String, 64, True, DBFieldIndex.DBIndex_None),
-            AsDBFieldDef.create('realstatus', '实名状态 ', DBFieldType.DBField_String, 24, False, DBFieldIndex.DBIndex_None),
+            AsDBFieldDef.create('wechatid', '微信公众平台openid 默认获取 unionid', DBFieldType.String, 32, True, DBFieldIndex.Unique),
+            AsDBFieldDef.create('weiboid', '微博ID', DBFieldType.String, 63, True, DBFieldIndex.NONE),
+            AsDBFieldDef.create('appleUUID', '苹果UUID', DBFieldType.String, 64, True, DBFieldIndex.NONE),
+            AsDBFieldDef.create('facebookid', 'facebook', DBFieldType.String, 64, True, DBFieldIndex.NONE),
+            AsDBFieldDef.create('twitterid', 'twitter', DBFieldType.String, 64, True, DBFieldIndex.NONE),
+            AsDBFieldDef.create('googleid', 'google', DBFieldType.String, 64, True, DBFieldIndex.NONE),
+            AsDBFieldDef.create('douyinid', '抖音id', DBFieldType.String, 64, True, DBFieldIndex.NONE),
+            AsDBFieldDef.create('ticktokid', 'ticktokid', DBFieldType.String, 64, True, DBFieldIndex.NONE),
+            AsDBFieldDef.create('qqid', 'qqID', DBFieldType.String, 63, True, DBFieldIndex.NONE),
+            AsDBFieldDef.create('deviceid', 'Device ID', DBFieldType.String, 64, True, DBFieldIndex.NONE),
+            AsDBFieldDef.create('realstatus', '实名状态 ', DBFieldType.String, 24, False, DBFieldIndex.NONE),
 
             common_db_fields()
         ]

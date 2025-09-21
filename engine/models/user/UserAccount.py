@@ -1,4 +1,5 @@
-from engine.core.DB import AsDBFieldDef, DBFieldType, DBFieldIndex, common_db_fields, saas_db_field
+from engine.core.DB import AsDBFieldDef, DBFieldType, DBFieldIndex
+from engine.utils.DBMS.DBTypes import common_db_fields, saas_db_field
 from engine.core.Model import AsModel
 
 class UserAccount(AsModel):
@@ -95,22 +96,22 @@ class UserAccount(AsModel):
 
     def table_def(self) -> list[AsDBFieldDef] | None:
         return [
-            AsDBFieldDef.create('uid', '用户ID 唯一索引', DBFieldType.DBField_String, 8, False,
-                                DBFieldIndex.DBIndex_Unique),
+            AsDBFieldDef.create('uid', '用户ID 唯一索引', DBFieldType.String, 8, False,
+                                DBFieldIndex.Unique),
             saas_db_field(),
-            AsDBFieldDef.create('groupid', '用户分组 参考user_group', DBFieldType.DBField_String, 8, False),
-            AsDBFieldDef.create('areaid', '地区id', DBFieldType.DBField_String, 8, False, DBFieldIndex.DBIndex_Index),
-            AsDBFieldDef.create('username', '用户名 账号密码登陆用', DBFieldType.DBField_String, 63, True, DBFieldIndex.DBIndex_Unique),
-            AsDBFieldDef.create('password', '密码 hash salt加密', DBFieldType.DBField_String, 255, True),
-            AsDBFieldDef.create('email', '邮箱 唯一', DBFieldType.DBField_String, 63, True, DBFieldIndex.DBIndex_Unique),
-            AsDBFieldDef.create('mobile', '手机 唯一', DBFieldType.DBField_String, 24, True, DBFieldIndex.DBIndex_Unique),
-            AsDBFieldDef.create('nickname', '昵称 30字以内', DBFieldType.DBField_String, 63, True),
-            AsDBFieldDef.create('avatar', '头像 url', DBFieldType.DBField_String, 255, True),
-            AsDBFieldDef.create('cover', '封面 url', DBFieldType.DBField_String, 255, True),
-            AsDBFieldDef.create('description', '介绍 250字以内', DBFieldType.DBField_String, 255, True),
-            AsDBFieldDef.create('introduce', '简介 120字以内', DBFieldType.DBField_RichText, -1, True),
-            AsDBFieldDef.create('birthday', '生日 时间戳', DBFieldType.DBField_Int, 11, True),
-            AsDBFieldDef.create('gender', "性别 female male private", DBFieldType.DBField_String, 16, False),
+            AsDBFieldDef.create('groupid', '用户分组 参考user_group', DBFieldType.String, 8, False),
+            AsDBFieldDef.create('areaid', '地区id', DBFieldType.String, 8, False, DBFieldIndex.Index),
+            AsDBFieldDef.create('username', '用户名 账号密码登陆用', DBFieldType.String, 63, True, DBFieldIndex.Unique),
+            AsDBFieldDef.create('password', '密码 hash salt加密', DBFieldType.String, 255, True),
+            AsDBFieldDef.create('email', '邮箱 唯一', DBFieldType.String, 63, True, DBFieldIndex.Unique),
+            AsDBFieldDef.create('mobile', '手机 唯一', DBFieldType.String, 24, True, DBFieldIndex.Unique),
+            AsDBFieldDef.create('nickname', '昵称 30字以内', DBFieldType.String, 63, True),
+            AsDBFieldDef.create('avatar', '头像 url', DBFieldType.String, 255, True),
+            AsDBFieldDef.create('cover', '封面 url', DBFieldType.String, 255, True),
+            AsDBFieldDef.create('description', '介绍 250字以内', DBFieldType.String, 255, True),
+            AsDBFieldDef.create('introduce', '简介 120字以内', DBFieldType.RichText, -1, True),
+            AsDBFieldDef.create('birthday', '生日 时间戳', DBFieldType.Int, 11, True),
+            AsDBFieldDef.create('gender', "性别 female male private", DBFieldType.String, 16, False),
             common_db_fields()
         ]
 

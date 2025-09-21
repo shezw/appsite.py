@@ -1,4 +1,5 @@
-from engine.core.DB import AsDBFieldDef, DBFieldType, DBFieldIndex, common_db_fields, saas_db_field
+from engine.core.DB import AsDBFieldDef, DBFieldType, DBFieldIndex
+from engine.utils.DBMS.DBTypes import common_db_fields, saas_db_field
 from engine.core.Model import AsModel
 from engine.models.user.UserAccount import UserAccount
 from engine.models.user.UserInfo import UserInfo
